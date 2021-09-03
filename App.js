@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import deepmerge from 'deepmerge';
 
-const backgroundColor = 'ghostwhite';
+export function getPrimaryButtonColor(darkTheme){
+  return darkTheme ? 'lightblue' : 'blue';
+}
+
+export function getSecondaryButtonColor(darkTheme){
+  return darkTheme ? 'lightgreen' : 'green';
+}
 
 export default function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -12,8 +18,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Button
+          color={getPrimaryButtonColor(darkTheme)}
           title={"Darkmode: " + darkTheme}
           onPress={() => setDarkTheme(!darkTheme)}
+      />
+      <Button
+          color={getSecondaryButtonColor(darkTheme)}
+          title={"Secondary"}
       />
       <StatusBar style="auto" />
     </View>
@@ -23,7 +34,6 @@ export default function App() {
 const baseStyleSheet = {
   container: {
     flex: 1,
-    backgroundColor: backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -31,14 +41,14 @@ const baseStyleSheet = {
 
 const lightStyleSheet = {
   container: {
-    backgroundColor: backgroundColor
-  },
+    backgroundColor: 'ghostwhite'
+  }
 };
 
 const darkStyleSheet = {
   container: {
     backgroundColor: "grey"
-  },
+  }
 };
 
 export function getStyleSheet(useDarkTheme){
