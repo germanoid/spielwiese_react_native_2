@@ -1,7 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import {StyleSheet, View} from "react-native";
 import {ThemeContext} from "./ThemeContext";
-import deepmerge from "deepmerge";
 
 const styles = StyleSheet.create({
     base: {
