@@ -3,36 +3,24 @@ import {StyleSheet, View} from "react-native";
 import {ThemeContext} from "./ThemeContext";
 import deepmerge from "deepmerge";
 
+const styles = StyleSheet.create({
+    base: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    light: {
+        backgroundColor: "ghostwhite"
+    },
+    dark: {
+        backgroundColor: "grey"
+    },
+});
+
 export default function StyleWrapper({ children }) {
   const [theme] = useContext(ThemeContext);
-  const styles = getStyleSheet(theme);
 
   return (
-    <View style={styles.container}>{children}</View>
+    <View style={[styles.base, theme === "dark" ? styles.dark : styles.light]}>{children}</View>
   );
-}
-
-const baseStyleSheet = {
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-};
-
-const lightStyleSheet = {
-  container: {
-    backgroundColor: "ghostwhite"
-  }
-};
-
-const darkStyleSheet = {
-  container: {
-    backgroundColor: "grey"
-  }
-};
-
-export function getStyleSheet(activeTheme) {
-  const theme = activeTheme === 'dark' ? darkStyleSheet : lightStyleSheet;
-  return StyleSheet.create(deepmerge(baseStyleSheet, theme));
 }
