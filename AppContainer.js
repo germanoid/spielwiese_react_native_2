@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
 import {StyleSheet, View} from "react-native";
-import {ThemeContext} from "./context/ThemeContext";
 import {getThemeData} from "./context/ThemeData";
 
 function getStyle() {
@@ -14,7 +13,6 @@ function getStyle() {
       }
   });
 }
-
 
 export default function AppContainer({ children }) {
   return (
