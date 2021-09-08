@@ -1,25 +1,23 @@
 import React, { createContext, useState, useContext } from "react";
 import {StyleSheet, View} from "react-native";
 import {ThemeContext} from "./context/ThemeContext";
+import {getThemeData} from "./context/ThemeData";
 
-const styles = StyleSheet.create({
-    base: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    light: {
-        backgroundColor: "ghostwhite"
-    },
-    dark: {
-        backgroundColor: "grey"
-    },
-});
+function getStyle() {
+  const backgroundColor = getThemeData()["background"]
+  return StyleSheet.create({
+      container: {
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: backgroundColor
+      }
+  });
+}
+
 
 export default function AppContainer({ children }) {
-  const [theme] = useContext(ThemeContext);
-
   return (
-    <View style={[styles.base, theme === "dark" ? styles.dark : styles.light]}>{children}</View>
+    <View style={getStyle().container}>{children}</View>
   );
 }
