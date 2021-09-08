@@ -22,3 +22,11 @@ export function getThemeData() {
 
   return themeSet ? themeSet : themeData[defaultTheme];
 }
+
+export function getThemeList(){
+  return Object.keys(themeData);
+}
+
+export function isThemeValid(theme){
+  return getThemeList().includes(theme);
+}
