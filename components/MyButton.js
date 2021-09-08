@@ -1,23 +1,12 @@
 import React, {useContext} from 'react';
 import {Button} from "react-native";
-import {ThemeContext} from "../context/ThemeContext";
-
-export function getPrimaryButtonColor(theme) {
-  return theme === "dark" ? "lightblue" : "blue";
-}
-
-export function getSecondaryButtonColor(theme) {
-  return theme === "dark" ? "lightgreen" : "green";
-}
-
-export function getButtonColor(theme, type) {
-  return type === "primary" ? getPrimaryButtonColor(theme) : getSecondaryButtonColor(theme);
-}
+import {getThemeData} from "../context/ThemeData";
 
 export default function MyButton(props) {
   const { onPress, title, type } = props;
-  const [theme] = useContext(ThemeContext);
+  const color = getThemeData()[type];
+
   return (
-    <Button title={title} onPress={onPress} color={getButtonColor(theme, type)}/>
+    <Button title={title} onPress={onPress} color={color}/>
   );
 }
