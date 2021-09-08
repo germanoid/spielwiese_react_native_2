@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import {StyleSheet, View} from "react-native";
-import {ThemeContext} from "./ThemeContext";
+import {ThemeContext} from "./context/ThemeContext";
 
 const styles = StyleSheet.create({
     base: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function StyleWrapper({ children }) {
+export default function AppContainer({ children }) {
   const [theme] = useContext(ThemeContext);
 
   return (

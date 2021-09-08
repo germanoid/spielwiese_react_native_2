@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import MyButton from "./MyButton"
-import {ThemeContext} from "../ThemeContext";
+import {ThemeContext} from "../context/ThemeContext";
 
 export default function DarkModeToggle() {
   const [theme, setTheme] = useContext(ThemeContext);

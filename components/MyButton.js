@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Button} from "react-native";
-import {ThemeContext} from "../ThemeContext";
+import {ThemeContext} from "../context/ThemeContext";
 
 export function getPrimaryButtonColor(theme) {
   return theme === "dark" ? "lightblue" : "blue";
