@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import {ThemeContext} from "./ThemeContext";
 
+const defaultTheme = "light";
+
 const themeData = {
     "light": {
         primary: "blue",
@@ -18,5 +20,5 @@ export function getThemeData() {
   const [theme] = useContext(ThemeContext);
   const themeSet = themeData[theme];
 
-  return themeSet ? themeSet : themeData[0];
+  return themeSet ? themeSet : themeData[defaultTheme];
 }
